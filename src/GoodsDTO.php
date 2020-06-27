@@ -1,8 +1,8 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App;
-
 
 class GoodsDTO
 {
@@ -48,9 +48,9 @@ class GoodsDTO
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getItemName(): int
+    public function getItemName(): string
     {
         return $this->item->name;
     }
