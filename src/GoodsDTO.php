@@ -20,6 +20,7 @@ class GoodsDTO
     public function __construct(Item $item)
     {
         $this->item = $item;
+        $this->type = Type::OTHER;
     }
 
     /**
@@ -31,17 +32,17 @@ class GoodsDTO
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getItemQuality(): string
+    public function getItemQuality(): int
     {
         return $this->item->quality;
     }
@@ -49,7 +50,7 @@ class GoodsDTO
     /**
      * @return int
      */
-    public function getItem(): int
+    public function getItemName(): int
     {
         return $this->item->name;
     }
@@ -60,5 +61,21 @@ class GoodsDTO
     public function getItemSellIn(): int
     {
         return $this->item->sell_in;
+    }
+
+    /**
+     * @param int $quality
+     */
+    public function setItemQuality(int $quality): void
+    {
+        $this->item->quality = $quality;
+    }
+
+    /**
+     * @param int $sell_in
+     */
+    public function setItemSellIn(int $sell_in): void
+    {
+        $this->item->sell_in = $sell_in;
     }
 }
