@@ -6,7 +6,8 @@ namespace App\Service;
 
 use App\GoodsDTO;
 
-interface IIncrease {
+interface IIncrease
+{
 
     public function increase(GoodsDTO $goodsDTO, int $count = 1): GoodsDTO;
 }

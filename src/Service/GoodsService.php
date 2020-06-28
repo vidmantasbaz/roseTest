@@ -7,7 +7,8 @@ namespace App\Service;
 use App\GoodsDTO;
 use App\Type;
 
-class GoodsService {
+class GoodsService
+{
 
     /**
      * @var PropertyQuality
@@ -25,8 +26,8 @@ class GoodsService {
      */
     public function __construct(PropertyQuality $propertyQuality, PropertySellDate $propertySellDate)
     {
-        $this->propertyQuality= $propertyQuality;
-        $this->propertySellDate= $propertySellDate;
+        $this->propertyQuality = $propertyQuality;
+        $this->propertySellDate = $propertySellDate;
     }
 
     /**
@@ -55,7 +56,7 @@ class GoodsService {
         $goodsDTO = $this->propertySellDate->decrease($goodsDTO);
 
         $count = 1;
-        if($this->propertySellDate->isZero($goodsDTO->getItemSellIn())) {
+        if ($this->propertySellDate->isZero($goodsDTO->getItemSellIn())) {
             $count = 2;
         }
         $goodsDTO = $this->propertyQuality->decrease($goodsDTO, $count);
@@ -72,7 +73,7 @@ class GoodsService {
         $goodsDTO = $this->propertySellDate->decrease($goodsDTO);
 
         $count = 2;
-        if($this->propertySellDate->isZero($goodsDTO->getItemSellIn())) {
+        if ($this->propertySellDate->isZero($goodsDTO->getItemSellIn())) {
             $count = 4;
         }
         $goodsDTO = $this->propertyQuality->decrease($goodsDTO, $count);
@@ -102,7 +103,7 @@ class GoodsService {
     {
         $goodsDTO = $this->propertySellDate->decrease($goodsDTO);
         $sellIn = $goodsDTO->getItemSellIn();
-        if($this->propertySellDate->isZero($sellIn)) {
+        if ($this->propertySellDate->isZero($sellIn)) {
             $goodsDTO->setItemQuality(0);
             return $goodsDTO;
         }

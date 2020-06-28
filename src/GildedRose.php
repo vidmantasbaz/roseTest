@@ -6,7 +6,8 @@ namespace App;
 
 use App\Service\GoodsService;
 
-final class GildedRose {
+final class GildedRose
+{
 
     /**
      * @var Item[]
@@ -18,13 +19,14 @@ final class GildedRose {
      */
     private $goodsService;
 
-    public function __construct(array $items, GoodsService $goodsService) {
+    public function __construct(array $items, GoodsService $goodsService)
+    {
         $this->items = $items;
         $this->goodsService = $goodsService;
     }
 
-    public function updateQuality() {
-
+    public function updateQuality()
+    {
         foreach ($this->items as $item) {
             $goods = $this->goodsService->determineType(new GoodsDTO($item));
             switch ($goods->getType()) {

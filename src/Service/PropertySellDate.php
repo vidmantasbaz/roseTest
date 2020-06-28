@@ -6,7 +6,8 @@ namespace App\Service;
 
 use App\GoodsDTO;
 
-class PropertySellDate implements IZero, IDecrease {
+class PropertySellDate implements IZero, IDecrease
+{
 
     public function isZero(int $sellIn): bool
     {

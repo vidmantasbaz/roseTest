@@ -6,8 +6,8 @@ namespace App\Service;
 
 use App\GoodsDTO;
 
-class PropertyQuality implements IMax, IZero, IDecrease, IIncrease {
-
+class PropertyQuality implements IMax, IZero, IDecrease, IIncrease
+{
     public function isZero(int $quality): bool
     {
         return $quality === 0 ? true : false;
@@ -23,7 +23,7 @@ class PropertyQuality implements IMax, IZero, IDecrease, IIncrease {
         $quality = $goodsDTO->getItemQuality();
 
         $x = 1;
-        while($x <= $count) {
+        while ($x <= $count) {
             if (!$this->isMaxed($quality)) {
                 $quality = $quality + 1;
                 $goodsDTO->setItemQuality($quality);
@@ -38,9 +38,9 @@ class PropertyQuality implements IMax, IZero, IDecrease, IIncrease {
     {
         $quality = $goodsDTO->getItemQuality();
         $x = 1;
-        while($x <= $count) {
+        while ($x <= $count) {
             if (!$this->isZero($quality)) {
-                $quality = $quality -1;
+                $quality = $quality - 1;
                 $goodsDTO->setItemQuality($quality);
             }
             $x++;
