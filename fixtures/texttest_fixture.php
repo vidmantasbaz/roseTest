@@ -3,7 +3,10 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\GildedRose;
+use App\Service\GoodsService;
 use App\Item;
+use App\Service\PropertyQuality;
+use App\Service\PropertySellDate;
 
 echo "OMGHAI!\n";
 
@@ -14,15 +17,16 @@ $items = array(
     new Item('Sulfuras, Hand of Ragnaros', 0, 80),
     new Item('Sulfuras, Hand of Ragnaros', -1, 80),
     new Item('Backstage passes to a TAFKAL80ETC concert', 15, 20),
-    new Item('Backstage passes to a TAFKAL80ETC concert', 10, 49),
-    new Item('Backstage passes to a TAFKAL80ETC concert', 5, 49),
+    new Item('Backstage passes to a TAFKAL80ETC concert', 10, 20),
+    new Item('Backstage passes to a TAFKAL80ETC concert', 5, 20),
     // this conjured item does not work properly yet
     new Item('Conjured Mana Cake', 3, 6)
 );
 
-$app = new GildedRose($items);
+$goodService = new GoodsService(new PropertyQuality(), new PropertySellDate());
+$app = new GildedRose($items, $goodService);
 
-$days = 2;
+$days = 7;
 if (count($argv) > 1) {
     $days = (int) $argv[1];
 }
